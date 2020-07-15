@@ -1,15 +1,15 @@
 <template>
   <div class="container">
-    <form action="" method="POST">
+    <form action="" method="POST" v-on:submit="submit">
       <div class="survey-title">
         <h1>{{ msg }}</h1>
       </div>
       <div class="survey-name">
-        <p>Enter your name: <input type="text" v-model="name"></p>
+        <p>Enter your name: <input type="text" v-model="name" required></p>
       </div>
       <div class="survey-location">
         <p>Select your Dojo Location:
-          <select v-model="location">
+          <select v-model="location" required>
             <option disabled value="">Select your Dojo Location:</option>
             <option value="arlington">Arlington</option>
             <option value="boise">Boise</option>
@@ -36,10 +36,10 @@
         </p>
       </div>
       <div class="survey-comments">
-        <p>Please write any comments: <br><textarea v-model="comments"></textarea></p>
+        <p>Please write any comments: <br><br><textarea v-model="comments"></textarea></p>
       </div>
       <div class="survey-submit">
-        <p><input type="submit" v-on:click="submit"></p>
+        <p><input type="submit"></p>
       </div>
     </form>
   </div>
