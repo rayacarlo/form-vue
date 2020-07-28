@@ -1,32 +1,25 @@
 <template>
   <div class="container">
     <h1>Counter Game!</h1>
-    <p>Clicks: {{ counter }}<br><br>
-        <button @click="counterClick" @mouseover="hover = true" @mouseleave="hover = false" :class="{ active: hover }">Click me!</button>
+    <p>Clicks: {{ count }}<br><br>
+        <button @click="onClick" @mouseover="hover = true" @mouseleave="hover = false" :class="{ active: hover }">Click me!</button>
     </p>
   </div>
 </template>
 
 <script>
 export default {
-    data: function() {
-        return {
-            counter: 0,
-            hover: false
-        };
-    },
-    mounted() {
-        const previousCounter = parseInt(localStorage.getItem("counter"));
-        if (previousCounter != null) {
-            this.counter = previousCounter
-        }
-    },
-    methods: {
-        counterClick: function(){
-            this.counter += 1;
-            localStorage.setItem("counter", this.counter);
-        }
+  name: 'Counter',
+  computed: {
+    count() {
+      return this.$store.state.count
     }
+  },
+  methods: {
+    onClick() {
+      this.$store.commit('increment')
+    }
+  }
 }
 </script>
 
